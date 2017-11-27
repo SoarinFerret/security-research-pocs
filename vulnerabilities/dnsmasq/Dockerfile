@@ -32,7 +32,7 @@ RUN bash -c 'echo "export ASAN_SYMBOLIZER_PATH=\"${ASAN_SYMBOLIZER_PATH}\"" >> /
 WORKDIR /test
 RUN wget http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.78.tar.gz
 RUN tar xzf dnsmasq-2.78.tar.gz
-RUN mv dnsmasq-2.78.tar.gz dnsmasq
+RUN mv dnsmasq-2.78 dnsmasq
 WORKDIR /test/dnsmasq
 # Patch Makefile so we can compile with ASAN
 RUN sed -i'' 's/LDFLAGS       =/LDFLAGS       ?=/' Makefile
