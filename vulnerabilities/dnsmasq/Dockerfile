@@ -30,7 +30,9 @@ RUN bash -c 'echo "export ASAN_OPTIONS=\"${ASAN_OPTIONS}\"" >> /root/.bashrc'
 RUN bash -c 'echo "export ASAN_SYMBOLIZER_PATH=\"${ASAN_SYMBOLIZER_PATH}\"" >> /root/.bashrc'
 
 WORKDIR /test
-RUN git clone git://thekelleys.org.uk/dnsmasq.git
+RUN wget http://www.thekelleys.org.uk/dnsmasq/dnsmasq-2.78.tar.gz
+RUN tar xzf dnsmasq-2.78.tar.gz
+RUN mv dnsmasq-2.78.tar.gz dnsmasq
 WORKDIR /test/dnsmasq
 # Patch Makefile so we can compile with ASAN
 RUN sed -i'' 's/LDFLAGS       =/LDFLAGS       ?=/' Makefile
