@@ -1,7 +1,7 @@
 FROM debian
 
 RUN apt-get update
-RUN apt-get install -y --force-yes wget git make gnupg nano
+RUN apt-get install -y --force-yes wget git make gnupg nano dnsutils
 
 # Unfortunately, this key isn't available over HTTPS.
 RUN wget -O /tmp/llvm-snapshot.gpg.key http://apt.llvm.org/llvm-snapshot.gpg.key
